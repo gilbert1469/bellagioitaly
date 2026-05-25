@@ -68,8 +68,8 @@ const experiences = [
     title: "Lake Como's Finest Tables",
     description:
       "The best tables on the lake are never listed on any booking platform. We hold relationships with the owners of Como's most sought-after restaurants — intimate lakeside terraces, century-old family trattorias, and Michelin-starred kitchens that seat fewer than twenty guests a night. We call ahead, we know which table catches the last light over the water, and we make sure you arrive expected.",
-    placeholder: 'https://placehold.co/900x640/D4C5B2/1C2B35?text=Finest+Tables',
-    imageAlt: 'Elegant lakeside dining on Lake Como',
+    placeholder: '/images/Restaurant.png',
+    imageAlt: 'Private lakeside dining at sunset on Lake Como',
     bg: '#FFFFFF',
   },
   {
@@ -79,8 +79,8 @@ const experiences = [
     title: 'Private Wine Tasting',
     description:
       "The finest wines of Como and northern Lombardy are made in quantities so small that most of the world has no idea they exist. We arrange private cellar visits with estate owners and head winemakers — never a tour guide — to taste unreleased vintages, walk the vineyards, and understand the philosophy behind wines that never leave the region. No shared visits. Every session is yours alone.",
-    placeholder: 'https://placehold.co/900x640/C8D4BF/1C2B35?text=Wine+Tasting',
-    imageAlt: 'Private wine cellar visit with estate owner on Lake Como',
+    placeholder: '/images/Wine_experience.png',
+    imageAlt: 'Private wine tasting in a vineyard above Lake Como',
     bg: '#F5F0E8',
   },
   {
@@ -90,8 +90,8 @@ const experiences = [
     title: 'Cooking with the Masters',
     description:
       "You won't find these kitchens on Google. We introduce you to resident chefs who trained in the great houses of Italy and to local nonne whose recipes exist only in their hands. You stand at the counter, not in an audience — working the pasta dough, folding the risotto, learning why the perch from this lake tastes like nothing else on earth. You leave with the recipe, the story, and a meal you cooked yourself.",
-    placeholder: 'https://placehold.co/900x640/D4C0B8/1C2B35?text=Cooking+Classes',
-    imageAlt: 'Private cooking class in a traditional Como kitchen',
+    placeholder: '/images/Cooking_class.png',
+    imageAlt: 'Private cooking class with a chef overlooking Lake Como',
     bg: '#FFFFFF',
   },
   {
@@ -101,8 +101,8 @@ const experiences = [
     title: 'Villa Circuit by Taxi Boat',
     description:
       "A private mahogany taxi boat, your own captain, no itinerary imposed by a group. Approach Villa del Balbianello from the water the way its owners always did — gliding in under the cypress trees before the gates open to the public. Drift past the façade of Villa d'Este, anchor off the gardens of Villa Carlotta, and take the long way home along the western shore as the mountains turn violet. The lake from the water is a different lake entirely.",
-    placeholder: 'https://placehold.co/900x640/B8CCDA/1C2B35?text=Villa+by+Boat',
-    imageAlt: 'Private taxi boat on Lake Como approaching Villa Balbianello',
+    placeholder: '/images/Taxi_boat_Luxury.png',
+    imageAlt: 'Luxury Riva taxi boat on Lake Como passing lakeside villas',
     bg: '#F5F0E8',
   },
   {
@@ -112,8 +112,8 @@ const experiences = [
     title: '24/7 Concierge',
     description:
       "We are available from your first planning call to the moment your car leaves for Malpensa. In between: the cashmere atelier in Como that doesn't advertise, the florist who will fill your villa with gardenias by morning, a driver who knows every road on both shores, last-minute dinner reservations when plans change, and the quiet confidence of knowing that someone who knows this place is always one message away. No request is too specific. That is precisely the point.",
-    placeholder: 'https://placehold.co/900x640/D0C8C0/1C2B35?text=Concierge',
-    imageAlt: 'Personal concierge service in Como',
+    placeholder: '/images/Concierge.png',
+    imageAlt: 'Personal concierge escorting guests to a luxury boutique in Milan',
     bg: '#FFFFFF',
   },
 ]
@@ -142,12 +142,12 @@ export default function Home() {
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <section className="relative h-screen min-h-[640px] flex items-center justify-center overflow-hidden">
         <Image
-          src="https://placehold.co/1920x1080/1C2B35/3D5A6E?text=Lake+Como"
-          alt="Lake Como, Italy at golden hour"
+          src="/images/Comolake12.jpg"
+          alt="Varenna village on Lake Como at sunset"
           fill
           className="object-cover"
           priority
-          unoptimized
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#1C2B35]/60 via-[#1C2B35]/45 to-[#1C2B35]/70" />
 
@@ -186,11 +186,11 @@ export default function Home() {
 
           <Fade className="relative aspect-[4/5] overflow-hidden">
             <Image
-              src="https://placehold.co/800x1000/D9D0C4/1C2B35?text=Bellagio+Village"
-              alt="Bellagio village on Lake Como"
+              src="/images/Comolake8.jpg"
+              alt="Bellagio village on Lake Como in summer"
               fill
               className="object-cover"
-              unoptimized
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </Fade>
 
@@ -253,7 +253,7 @@ export default function Home() {
                   alt={exp.imageAlt}
                   fill
                   className="object-cover"
-                  unoptimized
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </Fade>
 
