@@ -73,14 +73,14 @@ const experiences = [
     bg: '#FFFFFF',
   },
   {
-    id: 'food-wine',
-    navLabel: 'Food & Wine',
+    id: 'wine-tasting',
+    navLabel: 'Wine Tasting',
     icon: <WineIcon />,
-    title: 'Food & Wine Journeys',
+    title: 'Private Wine Tasting',
     description:
-      "The Lombardy lakes produce wines, cheeses, and olive oils that almost never leave the region — and that's exactly the point. We arrange private visits to small-production wineries in the hills above Varenna, cheesemakers in the Val d'Intelvi who still work by hand, and Saturday markets where the vendors know us by name. This is not a tour. It is a day spent eating and drinking with people who have spent their lives making something extraordinary.",
-    placeholder: 'https://placehold.co/900x640/C8D4BF/1C2B35?text=Food+%26+Wine',
-    imageAlt: 'Artisan winery in the hills above Lake Como',
+      "The finest wines of Como and northern Lombardy are made in quantities so small that most of the world has no idea they exist. We arrange private cellar visits with estate owners and head winemakers — never a tour guide — to taste unreleased vintages, walk the vineyards, and understand the philosophy behind wines that never leave the region. No shared visits. Every session is yours alone.",
+    placeholder: 'https://placehold.co/900x640/C8D4BF/1C2B35?text=Wine+Tasting',
+    imageAlt: 'Private wine cellar visit with estate owner on Lake Como',
     bg: '#F5F0E8',
   },
   {

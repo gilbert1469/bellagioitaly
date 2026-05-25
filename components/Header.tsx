@@ -6,7 +6,7 @@ import { usePathname, useRouter } from 'next/navigation'
 
 const experienceLinks = [
   { label: 'Finest Tables', href: '/finest-tables' },
-  { label: 'Food & Wine', href: '/food-wine' },
+  { label: 'Wine Tasting', href: '/wine-tasting' },
   { label: 'Cooking Classes', href: '/cooking-classes' },
   { label: 'Villa by Boat', href: '/villa-boat' },
   { label: 'Concierge', href: '/concierge' },
