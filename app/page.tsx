@@ -1,57 +1,8 @@
 'use client'
 
-import { useEffect, useRef, useState, ReactNode } from 'react'
 import Image from 'next/image'
-
-// ── Scroll reveal ──────────────────────────────────────────────────────────────
-
-function useReveal(threshold = 0.12) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [visible, setVisible] = useState(false)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const obs = new IntersectionObserver(
-      ([e]) => {
-        if (e.isIntersecting) {
-          setVisible(true)
-          obs.unobserve(el)
-        }
-      },
-      { threshold }
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [threshold])
-
-  return { ref, visible }
-}
-
-function Fade({
-  children,
-  delay = 0,
-  className = '',
-}: {
-  children: ReactNode
-  delay?: number
-  className?: string
-}) {
-  const { ref, visible } = useReveal()
-  return (
-    <div
-      ref={ref}
-      className={className}
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0)' : 'translateY(28px)',
-        transition: `opacity 0.85s ease ${delay}ms, transform 0.85s ease ${delay}ms`,
-      }}
-    >
-      {children}
-    </div>
-  )
-}
+import Link from 'next/link'
+import Fade from '@/components/Fade'
 
 // ── SVG icons ─────────────────────────────────────────────────────────────────
 
@@ -182,122 +133,11 @@ const testimonials = [
   },
 ]
 
-// ── Nav link config ────────────────────────────────────────────────────────────
-
-const mainNavLinks = [
-  { label: 'Philosophy', id: 'philosophy' },
-  { label: 'Contact', id: 'contact' },
-]
-
 // ── Page ───────────────────────────────────────────────────────────────────────
 
 export default function Home() {
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 60)
-    window.addEventListener('scroll', handler, { passive: true })
-    return () => window.removeEventListener('scroll', handler)
-  }, [])
-
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-  }
-
-  // shared link class factories
-  const navLinkClass = (scrolled: boolean) =>
-    `font-body text-[10px] tracking-[0.18em] uppercase transition-colors duration-300 hover:text-[#B8966E] ${
-      scrolled ? 'text-[#1C2B35]' : 'text-white/85'
-    }`
-
-  const expLinkClass = (scrolled: boolean) =>
-    `font-body text-[10px] tracking-[0.15em] uppercase transition-colors duration-300 hover:text-[#B8966E] ${
-      scrolled ? 'text-[#1C2B35]/70' : 'text-white/65'
-    }`
-
   return (
     <div className="bg-[#FAF8F4] text-[#1C2B35]">
-
-      {/* ── Navigation ────────────────────────────────────────────────────── */}
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? 'bg-[#FAF8F4]/96 backdrop-blur-sm shadow-[0_1px_0_0_rgba(28,43,53,0.08)]'
-            : 'bg-transparent'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-6">
-
-          {/* Logo */}
-          <a
-            href="#"
-            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
-            className={`font-display text-base tracking-[0.18em] uppercase shrink-0 transition-colors duration-500 ${
-              scrolled ? 'text-[#1C2B35]' : 'text-white'
-            }`}
-          >
-            Bellagio Italy
-          </a>
-
-          {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-5">
-
-            {/* Philosophy */}
-            <a
-              href="#philosophy"
-              onClick={(e) => { e.preventDefault(); scrollTo('philosophy') }}
-              className={navLinkClass(scrolled)}
-            >
-              Philosophy
-            </a>
-
-            {/* Separator */}
-            <span className={`w-px h-3 shrink-0 transition-colors duration-500 ${scrolled ? 'bg-[#B8966E]/35' : 'bg-white/25'}`} />
-
-            {/* 5 experience links */}
-            {experiences.map((exp) => (
-              <a
-                key={exp.id}
-                href={`#${exp.id}`}
-                onClick={(e) => { e.preventDefault(); scrollTo(exp.id) }}
-                className={expLinkClass(scrolled)}
-              >
-                {exp.navLabel}
-              </a>
-            ))}
-
-            {/* Separator */}
-            <span className={`w-px h-3 shrink-0 transition-colors duration-500 ${scrolled ? 'bg-[#B8966E]/35' : 'bg-white/25'}`} />
-
-            {/* Contact */}
-            <a
-              href="#contact"
-              onClick={(e) => { e.preventDefault(); scrollTo('contact') }}
-              className={navLinkClass(scrolled)}
-            >
-              Contact
-            </a>
-
-            {/* CTA */}
-            <a
-              href="#contact"
-              onClick={(e) => { e.preventDefault(); scrollTo('contact') }}
-              className="font-body text-[10px] tracking-[0.18em] uppercase bg-[#B8966E] text-white px-5 py-2.5 hover:bg-[#9A7A58] transition-colors duration-300 shrink-0"
-            >
-              Talk to Us
-            </a>
-          </nav>
-
-          {/* Mobile: CTA only */}
-          <a
-            href="#contact"
-            onClick={(e) => { e.preventDefault(); scrollTo('contact') }}
-            className="lg:hidden font-body text-[10px] tracking-[0.15em] uppercase bg-[#B8966E] text-white px-4 py-2 hover:bg-[#9A7A58] transition-colors shrink-0"
-          >
-            Talk to Us
-          </a>
-        </div>
-      </header>
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <section className="relative h-screen min-h-[640px] flex items-center justify-center overflow-hidden">
@@ -326,7 +166,6 @@ export default function Home() {
           </p>
           <a
             href="#contact"
-            onClick={(e) => { e.preventDefault(); scrollTo('contact') }}
             className="inline-block font-body text-xs tracking-[0.2em] uppercase bg-[#B8966E] text-white px-11 py-4 hover:bg-[#9A7A58] transition-colors duration-300"
           >
             Talk to Us
@@ -342,7 +181,7 @@ export default function Home() {
       </section>
 
       {/* ── Philosophy ────────────────────────────────────────────────────── */}
-      <section id="philosophy" className="py-28 md:py-36 px-6 bg-[#FAF8F4]">
+      <section id="philosophy" className="py-28 md:py-36 px-6 bg-[#FAF8F4] scroll-mt-20">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 md:gap-20 items-center">
 
           <Fade className="relative aspect-[4/5] overflow-hidden">
@@ -396,21 +235,18 @@ export default function Home() {
         <div className="h-px flex-1 bg-[#B8966E]/18" />
       </div>
 
-      {/* ── Experience sections ────────────────────────────────────────────── */}
+      {/* ── Experience summary sections ───────────────────────────────────── */}
       {experiences.map((exp, i) => {
-        // Even index (0,2,4): image right — odd index (1,3): image left
         const imageRight = i % 2 === 0
-
         return (
           <section
             key={exp.id}
             id={exp.id}
-            className="py-24 md:py-32 px-6"
+            className="py-24 md:py-32 px-6 scroll-mt-20"
             style={{ backgroundColor: exp.bg }}
           >
             <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 md:gap-20 items-center">
 
-              {/* Image */}
               <Fade className={`relative aspect-[3/2] overflow-hidden${imageRight ? ' md:order-last' : ''}`}>
                 <Image
                   src={exp.placeholder}
@@ -421,7 +257,6 @@ export default function Home() {
                 />
               </Fade>
 
-              {/* Text */}
               <div className={imageRight ? 'md:order-first' : ''}>
                 <Fade delay={120}>
                   <div className="text-[#B8966E] mb-5">{exp.icon}</div>
@@ -431,22 +266,28 @@ export default function Home() {
                   <h2 className="font-display text-3xl md:text-[2.4rem] font-light leading-[1.12] mb-7">
                     {exp.title}
                   </h2>
-                  <p className="font-body text-[#475569] leading-[1.85] text-[0.95rem]">
+                  <p className="font-body text-[#475569] leading-[1.85] text-[0.95rem] mb-8">
                     {exp.description}
                   </p>
-                  <div className="mt-8">
-                    <a
-                      href="#contact"
-                      onClick={(e) => { e.preventDefault(); scrollTo('contact') }}
-                      className="inline-flex items-center gap-2 font-body text-[10px] tracking-[0.2em] uppercase text-[#B8966E] hover:text-[#9A7A58] transition-colors duration-300 group"
+                  <Link
+                    href={`/${exp.id}`}
+                    className="inline-flex items-center gap-2 font-body text-[10px] tracking-[0.2em] uppercase text-[#B8966E] hover:text-[#9A7A58] transition-colors duration-300 group"
+                  >
+                    Explore this experience
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.4"
+                      strokeLinecap="round"
+                      className="translate-x-0 group-hover:translate-x-1 transition-transform duration-300"
                     >
-                      Enquire about this experience
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" className="translate-x-0 group-hover:translate-x-1 transition-transform duration-300">
-                        <line x1="2" y1="7" x2="12" y2="7" />
-                        <polyline points="8,3 12,7 8,11" />
-                      </svg>
-                    </a>
-                  </div>
+                      <line x1="2" y1="7" x2="12" y2="7" />
+                      <polyline points="8,3 12,7 8,11" />
+                    </svg>
+                  </Link>
                 </Fade>
               </div>
 
@@ -488,7 +329,6 @@ export default function Home() {
             </p>
             <a
               href="#contact"
-              onClick={(e) => { e.preventDefault(); scrollTo('contact') }}
               className="inline-block font-body text-xs tracking-[0.2em] uppercase border border-[#B8966E] text-[#D4B896] px-11 py-4 hover:bg-[#B8966E] hover:text-white transition-colors duration-300"
             >
               Talk to Us
@@ -500,13 +340,11 @@ export default function Home() {
       {/* ── Testimonials ──────────────────────────────────────────────────── */}
       <section className="py-28 md:py-36 px-6 bg-[#FAF8F4]">
         <div className="max-w-6xl mx-auto">
-
           <Fade className="text-center mb-14">
             <p className="font-body text-[10px] tracking-[0.35em] uppercase text-[#B8966E]">
               What Guests Say
             </p>
           </Fade>
-
           <div className="grid md:grid-cols-2 gap-12 md:gap-16">
             {testimonials.map((t, i) => (
               <Fade key={i} delay={i * 160}>
@@ -529,7 +367,7 @@ export default function Home() {
       </section>
 
       {/* ── Contact ───────────────────────────────────────────────────────── */}
-      <section id="contact" className="bg-[#F5F0E8] py-28 md:py-36 px-6">
+      <section id="contact" className="bg-[#F5F0E8] py-28 md:py-36 px-6 scroll-mt-20">
         <div className="max-w-2xl mx-auto text-center">
           <Fade>
             <p className="font-body text-[10px] tracking-[0.35em] uppercase text-[#B8966E] mb-5">
@@ -576,25 +414,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* ── Footer ────────────────────────────────────────────────────────── */}
-      <footer className="bg-[#1C2B35] py-10 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <span className="font-display text-white text-base tracking-[0.22em] uppercase">
-            Bellagio Italy
-          </span>
-          <p className="font-body text-xs text-white/45 text-center">
-            Via Borgo Vico 42, 22100 Como (CO), Italy
-          </p>
-          <div className="flex items-center gap-5 font-body text-xs text-white/45">
-            <span>© 2025 Bellagio Italy</span>
-            <span className="text-[#B8966E]/50">·</span>
-            <a href="#" className="hover:text-[#B8966E] transition-colors duration-200">
-              Privacy Policy
-            </a>
-          </div>
-        </div>
-      </footer>
 
     </div>
   )
