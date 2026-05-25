@@ -53,7 +53,7 @@ function Fade({
   )
 }
 
-// ── SVG icons for experiences ──────────────────────────────────────────────────
+// ── SVG icons ─────────────────────────────────────────────────────────────────
 
 function TableIcon() {
   return (
@@ -111,34 +111,59 @@ function BellIcon() {
 
 const experiences = [
   {
+    id: 'finest-tables',
+    navLabel: 'Finest Tables',
     icon: <TableIcon />,
     title: "Lake Como's Finest Tables",
     description:
-      'The best tables on the lake are never listed on any booking platform. We hold relationships with the owners of Como\'s most sought-after restaurants — intimate lakeside terraces, century-old family trattorias, and Michelin-starred kitchens that seat fewer than twenty guests a night. We call ahead, we know which table catches the last light over the water, and we make sure you arrive expected.',
+      "The best tables on the lake are never listed on any booking platform. We hold relationships with the owners of Como's most sought-after restaurants — intimate lakeside terraces, century-old family trattorias, and Michelin-starred kitchens that seat fewer than twenty guests a night. We call ahead, we know which table catches the last light over the water, and we make sure you arrive expected.",
+    placeholder: 'https://placehold.co/900x640/D4C5B2/1C2B35?text=Finest+Tables',
+    imageAlt: 'Elegant lakeside dining on Lake Como',
+    bg: '#FFFFFF',
   },
   {
+    id: 'food-wine',
+    navLabel: 'Food & Wine',
     icon: <WineIcon />,
     title: 'Food & Wine Journeys',
     description:
-      'The Lombardy lakes produce wines, cheeses, and olive oils that almost never leave the region — and that\'s exactly the point. We arrange private visits to small-production wineries in the hills above Varenna, cheesemakers in the Val d\'Intelvi who still work by hand, and Saturday markets where the vendors know us by name. This is not a tour. It is a day spent eating and drinking with people who have spent their lives making something extraordinary.',
+      "The Lombardy lakes produce wines, cheeses, and olive oils that almost never leave the region — and that's exactly the point. We arrange private visits to small-production wineries in the hills above Varenna, cheesemakers in the Val d'Intelvi who still work by hand, and Saturday markets where the vendors know us by name. This is not a tour. It is a day spent eating and drinking with people who have spent their lives making something extraordinary.",
+    placeholder: 'https://placehold.co/900x640/C8D4BF/1C2B35?text=Food+%26+Wine',
+    imageAlt: 'Artisan winery in the hills above Lake Como',
+    bg: '#F5F0E8',
   },
   {
+    id: 'cooking-classes',
+    navLabel: 'Cooking Classes',
     icon: <ChefHatIcon />,
     title: 'Cooking with the Masters',
     description:
-      'You won\'t find these kitchens on Google. We introduce you to resident chefs who trained in the great houses of Italy and to local nonne whose recipes exist only in their hands. You stand at the counter, not in an audience — working the pasta dough, folding the risotto, learning why the perch from this lake tastes like nothing else on earth. You leave with the recipe, the story, and a meal you cooked yourself.',
+      "You won't find these kitchens on Google. We introduce you to resident chefs who trained in the great houses of Italy and to local nonne whose recipes exist only in their hands. You stand at the counter, not in an audience — working the pasta dough, folding the risotto, learning why the perch from this lake tastes like nothing else on earth. You leave with the recipe, the story, and a meal you cooked yourself.",
+    placeholder: 'https://placehold.co/900x640/D4C0B8/1C2B35?text=Cooking+Classes',
+    imageAlt: 'Private cooking class in a traditional Como kitchen',
+    bg: '#FFFFFF',
   },
   {
+    id: 'villa-boat',
+    navLabel: 'Villa by Boat',
     icon: <BoatIcon />,
     title: 'Villa Circuit by Taxi Boat',
     description:
-      'A private mahogany taxi boat, your own captain, no itinerary imposed by a group. Approach Villa del Balbianello from the water the way its owners always did — gliding in under the cypress trees before the gates open to the public. Drift past the façade of Villa d\'Este, anchor off the gardens of Villa Carlotta, and take the long way home along the western shore as the mountains turn violet. The lake from the water is a different lake entirely.',
+      "A private mahogany taxi boat, your own captain, no itinerary imposed by a group. Approach Villa del Balbianello from the water the way its owners always did — gliding in under the cypress trees before the gates open to the public. Drift past the façade of Villa d'Este, anchor off the gardens of Villa Carlotta, and take the long way home along the western shore as the mountains turn violet. The lake from the water is a different lake entirely.",
+    placeholder: 'https://placehold.co/900x640/B8CCDA/1C2B35?text=Villa+by+Boat',
+    imageAlt: 'Private taxi boat on Lake Como approaching Villa Balbianello',
+    bg: '#F5F0E8',
   },
   {
+    id: 'concierge',
+    navLabel: 'Concierge',
     icon: <BellIcon />,
     title: '24/7 Concierge',
     description:
-      'We are available from your first planning call to the moment your car leaves for Malpensa. In between: the cashmere atelier in Como that doesn\'t advertise, the florist who will fill your villa with gardenias by morning, a driver who knows every road on both shores, last-minute dinner reservations when plans change, and the quiet confidence of knowing that someone who knows this place is always one message away. No request is too specific. That is precisely the point.',
+      "We are available from your first planning call to the moment your car leaves for Malpensa. In between: the cashmere atelier in Como that doesn't advertise, the florist who will fill your villa with gardenias by morning, a driver who knows every road on both shores, last-minute dinner reservations when plans change, and the quiet confidence of knowing that someone who knows this place is always one message away. No request is too specific. That is precisely the point.",
+    placeholder: 'https://placehold.co/900x640/D0C8C0/1C2B35?text=Concierge',
+    imageAlt: 'Personal concierge service in Como',
+    bg: '#FFFFFF',
   },
 ]
 
@@ -157,6 +182,13 @@ const testimonials = [
   },
 ]
 
+// ── Nav link config ────────────────────────────────────────────────────────────
+
+const mainNavLinks = [
+  { label: 'Philosophy', id: 'philosophy' },
+  { label: 'Contact', id: 'contact' },
+]
+
 // ── Page ───────────────────────────────────────────────────────────────────────
 
 export default function Home() {
@@ -172,54 +204,95 @@ export default function Home() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  // shared link class factories
+  const navLinkClass = (scrolled: boolean) =>
+    `font-body text-[10px] tracking-[0.18em] uppercase transition-colors duration-300 hover:text-[#B8966E] ${
+      scrolled ? 'text-[#1C2B35]' : 'text-white/85'
+    }`
+
+  const expLinkClass = (scrolled: boolean) =>
+    `font-body text-[10px] tracking-[0.15em] uppercase transition-colors duration-300 hover:text-[#B8966E] ${
+      scrolled ? 'text-[#1C2B35]/70' : 'text-white/65'
+    }`
+
   return (
     <div className="bg-[#FAF8F4] text-[#1C2B35]">
 
       {/* ── Navigation ────────────────────────────────────────────────────── */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? 'bg-[#FAF8F4]/96 backdrop-blur-sm shadow-[0_1px_0_0_rgba(28,43,53,0.08)]' : 'bg-transparent'
+          scrolled
+            ? 'bg-[#FAF8F4]/96 backdrop-blur-sm shadow-[0_1px_0_0_rgba(28,43,53,0.08)]'
+            : 'bg-transparent'
         }`}
       >
-        <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-          <span
-            className={`font-display text-lg tracking-[0.18em] uppercase transition-colors duration-500 ${
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-6">
+
+          {/* Logo */}
+          <a
+            href="#"
+            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
+            className={`font-display text-base tracking-[0.18em] uppercase shrink-0 transition-colors duration-500 ${
               scrolled ? 'text-[#1C2B35]' : 'text-white'
             }`}
           >
             Bellagio Italy
-          </span>
+          </a>
 
-          <nav className="hidden md:flex items-center gap-8">
-            {[
-              { label: 'Philosophy', id: 'philosophy' },
-              { label: 'Experiences', id: 'experiences' },
-              { label: 'Contact', id: 'contact' },
-            ].map(({ label, id }) => (
+          {/* Desktop nav */}
+          <nav className="hidden lg:flex items-center gap-5">
+
+            {/* Philosophy */}
+            <a
+              href="#philosophy"
+              onClick={(e) => { e.preventDefault(); scrollTo('philosophy') }}
+              className={navLinkClass(scrolled)}
+            >
+              Philosophy
+            </a>
+
+            {/* Separator */}
+            <span className={`w-px h-3 shrink-0 transition-colors duration-500 ${scrolled ? 'bg-[#B8966E]/35' : 'bg-white/25'}`} />
+
+            {/* 5 experience links */}
+            {experiences.map((exp) => (
               <a
-                key={id}
-                href={`#${id}`}
-                onClick={(e) => { e.preventDefault(); scrollTo(id) }}
-                className={`font-body text-xs tracking-[0.2em] uppercase transition-colors duration-300 hover:text-[#B8966E] ${
-                  scrolled ? 'text-[#1C2B35]' : 'text-white/85'
-                }`}
+                key={exp.id}
+                href={`#${exp.id}`}
+                onClick={(e) => { e.preventDefault(); scrollTo(exp.id) }}
+                className={expLinkClass(scrolled)}
               >
-                {label}
+                {exp.navLabel}
               </a>
             ))}
+
+            {/* Separator */}
+            <span className={`w-px h-3 shrink-0 transition-colors duration-500 ${scrolled ? 'bg-[#B8966E]/35' : 'bg-white/25'}`} />
+
+            {/* Contact */}
             <a
               href="#contact"
               onClick={(e) => { e.preventDefault(); scrollTo('contact') }}
-              className="font-body text-xs tracking-[0.2em] uppercase bg-[#B8966E] text-white px-5 py-2.5 hover:bg-[#9A7A58] transition-colors duration-300"
+              className={navLinkClass(scrolled)}
+            >
+              Contact
+            </a>
+
+            {/* CTA */}
+            <a
+              href="#contact"
+              onClick={(e) => { e.preventDefault(); scrollTo('contact') }}
+              className="font-body text-[10px] tracking-[0.18em] uppercase bg-[#B8966E] text-white px-5 py-2.5 hover:bg-[#9A7A58] transition-colors duration-300 shrink-0"
             >
               Talk to Us
             </a>
           </nav>
 
+          {/* Mobile: CTA only */}
           <a
             href="#contact"
             onClick={(e) => { e.preventDefault(); scrollTo('contact') }}
-            className="md:hidden font-body text-xs tracking-[0.15em] uppercase bg-[#B8966E] text-white px-4 py-2 hover:bg-[#9A7A58] transition-colors"
+            className="lg:hidden font-body text-[10px] tracking-[0.15em] uppercase bg-[#B8966E] text-white px-4 py-2 hover:bg-[#9A7A58] transition-colors shrink-0"
           >
             Talk to Us
           </a>
@@ -251,12 +324,13 @@ export default function Home() {
             Private experiences for the discerning traveler. Not an agency —
             a personal guide to what Lake Como truly offers.
           </p>
-          <button
-            onClick={() => scrollTo('contact')}
-            className="font-body text-xs tracking-[0.2em] uppercase bg-[#B8966E] text-white px-11 py-4 hover:bg-[#9A7A58] transition-colors duration-300"
+          <a
+            href="#contact"
+            onClick={(e) => { e.preventDefault(); scrollTo('contact') }}
+            className="inline-block font-body text-xs tracking-[0.2em] uppercase bg-[#B8966E] text-white px-11 py-4 hover:bg-[#9A7A58] transition-colors duration-300"
           >
             Talk to Us
-          </button>
+          </a>
         </div>
 
         <div className="absolute bottom-9 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40">
@@ -268,7 +342,7 @@ export default function Home() {
       </section>
 
       {/* ── Philosophy ────────────────────────────────────────────────────── */}
-      <section id="philosophy" className="py-28 md:py-36 px-6">
+      <section id="philosophy" className="py-28 md:py-36 px-6 bg-[#FAF8F4]">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 md:gap-20 items-center">
 
           <Fade className="relative aspect-[4/5] overflow-hidden">
@@ -322,40 +396,71 @@ export default function Home() {
         <div className="h-px flex-1 bg-[#B8966E]/18" />
       </div>
 
-      {/* ── Experiences ───────────────────────────────────────────────────── */}
-      <section id="experiences" className="py-28 md:py-36 px-6">
-        <div className="max-w-6xl mx-auto">
+      {/* ── Experience sections ────────────────────────────────────────────── */}
+      {experiences.map((exp, i) => {
+        // Even index (0,2,4): image right — odd index (1,3): image left
+        const imageRight = i % 2 === 0
 
-          <Fade className="text-center mb-16 md:mb-20">
-            <p className="font-body text-[10px] tracking-[0.35em] uppercase text-[#B8966E] mb-4">
-              What We Offer
-            </p>
-            <h2 className="font-display text-4xl md:text-[2.85rem] font-light">
-              Five ways to experience Como
-            </h2>
-          </Fade>
+        return (
+          <section
+            key={exp.id}
+            id={exp.id}
+            className="py-24 md:py-32 px-6"
+            style={{ backgroundColor: exp.bg }}
+          >
+            <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 md:gap-20 items-center">
 
-          <div className="grid sm:grid-cols-2 gap-7">
-            {experiences.map((exp, i) => (
-              <Fade
-                key={exp.title}
-                delay={i * 90}
-                className={`p-9 border border-[#B8966E]/14 hover:border-[#B8966E]/38 transition-all duration-500 hover:shadow-xl hover:shadow-[#B8966E]/6 group${
-                  i === 4 ? ' sm:col-span-2 sm:max-w-[calc(50%-14px)] sm:mx-auto' : ''
-                }`}
-              >
-                <div className="text-[#B8966E] mb-6">{exp.icon}</div>
-                <h3 className="font-display text-[1.3rem] font-medium mb-3 group-hover:text-[#B8966E] transition-colors duration-300">
-                  {exp.title}
-                </h3>
-                <p className="font-body text-[0.88rem] text-[#475569] leading-[1.75]">
-                  {exp.description}
-                </p>
+              {/* Image */}
+              <Fade className={`relative aspect-[3/2] overflow-hidden${imageRight ? ' md:order-last' : ''}`}>
+                <Image
+                  src={exp.placeholder}
+                  alt={exp.imageAlt}
+                  fill
+                  className="object-cover"
+                  unoptimized
+                />
               </Fade>
-            ))}
-          </div>
-        </div>
-      </section>
+
+              {/* Text */}
+              <div className={imageRight ? 'md:order-first' : ''}>
+                <Fade delay={120}>
+                  <div className="text-[#B8966E] mb-5">{exp.icon}</div>
+                  <p className="font-body text-[10px] tracking-[0.35em] uppercase text-[#B8966E] mb-4">
+                    {exp.navLabel}
+                  </p>
+                  <h2 className="font-display text-3xl md:text-[2.4rem] font-light leading-[1.12] mb-7">
+                    {exp.title}
+                  </h2>
+                  <p className="font-body text-[#475569] leading-[1.85] text-[0.95rem]">
+                    {exp.description}
+                  </p>
+                  <div className="mt-8">
+                    <a
+                      href="#contact"
+                      onClick={(e) => { e.preventDefault(); scrollTo('contact') }}
+                      className="inline-flex items-center gap-2 font-body text-[10px] tracking-[0.2em] uppercase text-[#B8966E] hover:text-[#9A7A58] transition-colors duration-300 group"
+                    >
+                      Enquire about this experience
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" className="translate-x-0 group-hover:translate-x-1 transition-transform duration-300">
+                        <line x1="2" y1="7" x2="12" y2="7" />
+                        <polyline points="8,3 12,7 8,11" />
+                      </svg>
+                    </a>
+                  </div>
+                </Fade>
+              </div>
+
+            </div>
+          </section>
+        )
+      })}
+
+      {/* Gold divider */}
+      <div className="flex items-center max-w-5xl mx-auto px-6">
+        <div className="h-px flex-1 bg-[#B8966E]/18" />
+        <div className="mx-5 w-1.5 h-1.5 rounded-full bg-[#B8966E]/60" />
+        <div className="h-px flex-1 bg-[#B8966E]/18" />
+      </div>
 
       {/* ── Mid-page CTA ──────────────────────────────────────────────────── */}
       <section className="bg-[#1C2B35] py-28 md:py-36 px-6 relative overflow-hidden">
@@ -381,21 +486,22 @@ export default function Home() {
               There is no booking form here. No calendar widget. Only a conversation between
               you and someone who knows this place deeply — and wants to share it properly.
             </p>
-            <button
-              onClick={() => scrollTo('contact')}
-              className="font-body text-xs tracking-[0.2em] uppercase border border-[#B8966E] text-[#D4B896] px-11 py-4 hover:bg-[#B8966E] hover:text-white transition-colors duration-300"
+            <a
+              href="#contact"
+              onClick={(e) => { e.preventDefault(); scrollTo('contact') }}
+              className="inline-block font-body text-xs tracking-[0.2em] uppercase border border-[#B8966E] text-[#D4B896] px-11 py-4 hover:bg-[#B8966E] hover:text-white transition-colors duration-300"
             >
               Talk to Us
-            </button>
+            </a>
           </Fade>
         </div>
       </section>
 
       {/* ── Testimonials ──────────────────────────────────────────────────── */}
-      <section className="py-28 md:py-36 px-6">
+      <section className="py-28 md:py-36 px-6 bg-[#FAF8F4]">
         <div className="max-w-6xl mx-auto">
 
-          <Fade className="text-center mb-14 md:mb-18">
+          <Fade className="text-center mb-14">
             <p className="font-body text-[10px] tracking-[0.35em] uppercase text-[#B8966E]">
               What Guests Say
             </p>
@@ -446,15 +552,7 @@ export default function Home() {
                 href="mailto:hello@bellagioitaly.com"
                 className="flex items-center gap-3 font-body text-xs tracking-[0.15em] uppercase bg-[#1C2B35] text-white px-8 py-4 hover:bg-[#2D4155] transition-colors duration-300 w-full sm:w-auto justify-center"
               >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.4"
-                  strokeLinecap="round"
-                >
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round">
                   <rect x="1.5" y="3.5" width="13" height="9" rx="1.5" />
                   <path d="M1.5 4.5 L8 9 L14.5 4.5" />
                 </svg>
