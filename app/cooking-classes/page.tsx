@@ -12,8 +12,8 @@ export default function CookingClasses() {
     <ExperienceLayout
       title="Cooking with the Masters"
       tagline="Recipes that exist only in someone's hands."
-      heroPlaceholder="https://placehold.co/1920x600/1C2B35/D4B896?text=Cooking+Classes"
-      heroAlt="Private cooking class in a traditional Como kitchen"
+      heroPlaceholder="/images/Cooking_class.png"
+      heroAlt="Private cooking class with a chef overlooking Lake Como"
       intro={[
         "There are recipes on this lake that have never been written down. They live in the muscle memory of women who learned them from their mothers, who learned them from theirs — and who have no particular interest in teaching a class, posting a video, or appearing in a travel magazine. Getting into one of these kitchens requires something that cannot be booked online. It requires an introduction.",
         "We have those introductions. Our network includes private chefs who trained in the great houses of northern Italy and who now cook in their own homes; local nonne who are willing, occasionally, to share their afternoon with the right kind of visitor; and a handful of restaurant chefs who offer private sessions outside of service hours, in kitchens you will have entirely to yourselves.",

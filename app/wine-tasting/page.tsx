@@ -12,8 +12,8 @@ export default function WineTasting() {
     <ExperienceLayout
       title="Private Wine Tasting"
       tagline="The cellars that never needed a sign outside."
-      heroPlaceholder="https://placehold.co/1920x600/1C2B35/D4B896?text=Wine+Tasting"
-      heroAlt="Private wine cellar visit with estate owner on Lake Como"
+      heroPlaceholder="/images/Wine_experience.png"
+      heroAlt="Private wine tasting in a vineyard above Lake Como"
       intro={[
         "The finest wines of Lake Como and northern Lombardy are not found in shops or on restaurant wine lists. They are found in the cellars of families who have been making wine for generations — families who do not advertise, do not take group tours, and do not receive visitors they have not personally invited. We arrange those invitations.",
         "Our relationships with the winemakers of this region have been built over years of trust and mutual respect. When we bring a guest to a cellar, it is not a visit arranged through a booking service. The estate owner or head winemaker opens the door personally, walks you through the vineyards, and sits with you at the cellar table to open bottles that are not for sale — vintages still in barrel, small-batch cuvées that will never be commercially released, experimental lots that represent where the producer's thinking is heading next.",

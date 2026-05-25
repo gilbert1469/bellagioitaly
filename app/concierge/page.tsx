@@ -12,8 +12,8 @@ export default function Concierge() {
     <ExperienceLayout
       title="24/7 Concierge"
       tagline="One number. Everything handled."
-      heroPlaceholder="https://placehold.co/1920x600/1C2B35/D4B896?text=Concierge"
-      heroAlt="Personal concierge service in Como"
+      heroPlaceholder="/images/Concierge.png"
+      heroAlt="Personal concierge escorting guests to a luxury boutique in Milan"
       intro={[
         "Most concierge services are really just informed referral services. They know a list of good restaurants. They can book a transfer. They can tell you where to buy cashmere. What they cannot do — because they do not have the relationships, the time, or the local knowledge — is actually handle everything. We can.",
         "From the moment you confirm your dates with us, we begin working on your arrival. We ask questions: about how you like to travel, what you hate about travel, what you have loved in the past, what your particular version of a perfect day looks like. We learn your preferences before you arrive, so that the things you value most are already in place when you do.",

@@ -12,8 +12,8 @@ export default function VillaBoat() {
     <ExperienceLayout
       title="Villa Circuit by Taxi Boat"
       tagline="The lake seen the way it was always meant to be."
-      heroPlaceholder="https://placehold.co/1920x600/1C2B35/D4B896?text=Villa+by+Boat"
-      heroAlt="Private taxi boat on Lake Como approaching Villa Balbianello"
+      heroPlaceholder="/images/Taxi_boat_Luxury.png"
+      heroAlt="Luxury Riva taxi boat on Lake Como passing lakeside villas"
       intro={[
         "Lake Como was designed to be seen from the water. The great villas — Balbianello, d'Este, Carlotta, Serbelloni — were built to face the lake, not the road. Their gardens, their terraces, their proportions were conceived for arrivals by boat. Approaching them from the shore, past the tourist buses and the souvenir stands, is to see them wrong. We take you the right way.",
         "Your transport is a private mahogany taxi boat — the classic craft of this lake, polished and quiet, captained by someone who has been working these waters his entire life and who knows where to slow down, where to linger, and where to anchor for a moment so the silence of the lake can do its work.",

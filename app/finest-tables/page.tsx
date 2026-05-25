@@ -12,8 +12,8 @@ export default function FinestTables() {
     <ExperienceLayout
       title="Lake Como's Finest Tables"
       tagline="The table was set before you knew you wanted it."
-      heroPlaceholder="https://placehold.co/1920x600/1C2B35/D4B896?text=Finest+Tables"
-      heroAlt="Elegant lakeside dining on Lake Como"
+      heroPlaceholder="/images/Restaurant.png"
+      heroAlt="Private lakeside dining at sunset on Lake Como"
       intro={[
         "On Lake Como, the finest restaurants are not the ones with the most visible signs. They are the ones where the owner knows your name before you arrive, where the sommelier has already set aside something from a limited case, and where the menu is a conversation rather than a list. These are the tables we hold for you.",
         "Over many years, we have built direct relationships with the owners, chefs, and maître d's of the restaurants that matter most on this lake — from the Michelin-starred kitchens to the hidden trattorias that have fed generations of Como families without ever once advertising. Access to these tables does not come through an app. It comes through trust.",

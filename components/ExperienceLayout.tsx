@@ -38,7 +38,7 @@ export default function ExperienceLayout({
           fill
           className="object-cover"
           priority
-          unoptimized
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#1C2B35]/65 via-[#1C2B35]/50 to-[#1C2B35]/78" />
         <div className="relative z-10 text-center text-white max-w-3xl mx-auto px-6">
