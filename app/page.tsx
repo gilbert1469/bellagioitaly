@@ -114,31 +114,31 @@ const experiences = [
     icon: <TableIcon />,
     title: "Lake Como's Finest Tables",
     description:
-      'Private reservations at the top lakeside restaurants, including tables that simply don\'t accept walk-ins.',
+      'The best tables on the lake are never listed on any booking platform. We hold relationships with the owners of Como\'s most sought-after restaurants — intimate lakeside terraces, century-old family trattorias, and Michelin-starred kitchens that seat fewer than twenty guests a night. We call ahead, we know which table catches the last light over the water, and we make sure you arrive expected.',
   },
   {
     icon: <WineIcon />,
     title: 'Food & Wine Journeys',
     description:
-      'Niche enogastronomic itineraries: artisan producers, cellar visits, local markets far off the tourist path.',
+      'The Lombardy lakes produce wines, cheeses, and olive oils that almost never leave the region — and that\'s exactly the point. We arrange private visits to small-production wineries in the hills above Varenna, cheesemakers in the Val d\'Intelvi who still work by hand, and Saturday markets where the vendors know us by name. This is not a tour. It is a day spent eating and drinking with people who have spent their lives making something extraordinary.',
   },
   {
     icon: <ChefHatIcon />,
     title: 'Cooking with the Masters',
     description:
-      'Private cooking classes with resident chefs and local nonne — in their own home kitchens.',
+      'You won\'t find these kitchens on Google. We introduce you to resident chefs who trained in the great houses of Italy and to local nonne whose recipes exist only in their hands. You stand at the counter, not in an audience — working the pasta dough, folding the risotto, learning why the perch from this lake tastes like nothing else on earth. You leave with the recipe, the story, and a meal you cooked yourself.',
   },
   {
     icon: <BoatIcon />,
     title: 'Villa Circuit by Taxi Boat',
     description:
-      'Exclusive private boat tours of Como\'s legendary villas: Balbianello, d\'Este, Carlotta.',
+      'A private mahogany taxi boat, your own captain, no itinerary imposed by a group. Approach Villa del Balbianello from the water the way its owners always did — gliding in under the cypress trees before the gates open to the public. Drift past the façade of Villa d\'Este, anchor off the gardens of Villa Carlotta, and take the long way home along the western shore as the mountains turn violet. The lake from the water is a different lake entirely.',
   },
   {
     icon: <BellIcon />,
     title: '24/7 Concierge',
     description:
-      'Your personal assistant for shopping, transfers, reservations, and surprises — always available.',
+      'We are available from your first planning call to the moment your car leaves for Malpensa. In between: the cashmere atelier in Como that doesn\'t advertise, the florist who will fill your villa with gardenias by morning, a driver who knows every road on both shores, last-minute dinner reservations when plans change, and the quiet confidence of knowing that someone who knows this place is always one message away. No request is too specific. That is precisely the point.',
   },
 ]
 
@@ -196,30 +196,33 @@ export default function Home() {
               { label: 'Experiences', id: 'experiences' },
               { label: 'Contact', id: 'contact' },
             ].map(({ label, id }) => (
-              <button
+              <a
                 key={id}
-                onClick={() => scrollTo(id)}
+                href={`#${id}`}
+                onClick={(e) => { e.preventDefault(); scrollTo(id) }}
                 className={`font-body text-xs tracking-[0.2em] uppercase transition-colors duration-300 hover:text-[#B8966E] ${
                   scrolled ? 'text-[#1C2B35]' : 'text-white/85'
                 }`}
               >
                 {label}
-              </button>
+              </a>
             ))}
-            <button
-              onClick={() => scrollTo('contact')}
+            <a
+              href="#contact"
+              onClick={(e) => { e.preventDefault(); scrollTo('contact') }}
               className="font-body text-xs tracking-[0.2em] uppercase bg-[#B8966E] text-white px-5 py-2.5 hover:bg-[#9A7A58] transition-colors duration-300"
             >
               Talk to Us
-            </button>
+            </a>
           </nav>
 
-          <button
-            onClick={() => scrollTo('contact')}
+          <a
+            href="#contact"
+            onClick={(e) => { e.preventDefault(); scrollTo('contact') }}
             className="md:hidden font-body text-xs tracking-[0.15em] uppercase bg-[#B8966E] text-white px-4 py-2 hover:bg-[#9A7A58] transition-colors"
           >
             Talk to Us
-          </button>
+          </a>
         </div>
       </header>
 
